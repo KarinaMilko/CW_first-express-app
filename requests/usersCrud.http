@@ -1,0 +1,52 @@
+POST http://localhost:5000/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Test3",
+    "lastName": "Testovych3",
+    "email": "mail3@mail.com" 
+}
+
+###
+
+GET http://localhost:5000/users HTTP/1.1
+
+###
+
+# 200 {user}
+GET http://localhost:5000/users/14a38120-a623-4cb1-a596-9aec98438b65 HTTP/1.1
+
+###
+
+# 404 User Not Found 
+GET http://localhost:5000/users/24a38120-a623-4cb1-a596-9aec98438b65 HTTP/1.1
+
+###
+
+# {updatedUser} 200
+PATCH http://localhost:5000/users/14a38120-a623-4cb1-a596-9aec98438b65 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Jane"
+}
+
+###
+
+# User Not Found 404
+PATCH http://localhost:5000/users/74a38120-a623-4cb1-a596-9aec98438b65 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Jane"
+}
+
+###
+
+# 204
+DELETE http://localhost:5000/users/14a38120-a623-4cb1-a596-9aec98438b65 HTTP/1.1
+
+###
+
+# 404
+DELETE http://localhost:5000/users/84a38120-a623-4cb1-a596-9aec98438b65 HTTP/1.1
